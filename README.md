@@ -1,0 +1,70 @@
+# Análisis de la experiencia del cliente: Análisis de abandono y retención
+
+Este proyecto analiza el abandono de clientes (*churn*) en una empresa de telecomunicaciones para identificar segmentos asociados a mayores tasas de cancelación y explorar cómo el aprendizaje automático (*machine learning*) puede apoyar las estrategias de retención.
+
+El análisis combina el análisis exploratorio de datos, la segmentación de clientes y la clasificación mediante LightGBM, haciendo hincapié en obtener información empresarial accionable y en una evaluación transparente del modelo.
+
+## Objetivos empresariales
+
+- Identificar segmentos de clientes con mayores tasas de abandono.
+
+- Explorar las relaciones entre el abandono, los tipos de contrato, los servicios de internet y los métodos de pago.
+
+- Evaluar modelos de aprendizaje automático para la clasificación retrospectiva del abandono.
+
+- Ofrecer recomendaciones basadas en datos para fomentar la retención de clientes.
+
+## Conjunto de datos
+
+El conjunto de datos contiene 7.043 registros de clientes, incluyendo detalles del contrato, servicios contratados, información de facturación y características demográficas.
+
+La tasa de abandono observada en general es del 26,54 %.
+
+## Herramientas y tecnologías
+
+Python · Pandas · NumPy · Matplotlib · Seaborn · Scikit-learn · LightGBM · Jupyter Notebook
+
+## Hallazgos clave
+
+- Contratos mensuales: 42,7 % de abandono, frente al 11,3 % en contratos de un año y el 2,8 % en contratos de dos años.
+
+- Clientes con fibra óptica: 41,9 % de abandono.
+
+- Pagos con cheque electrónico: 45,3 % de abandono.
+
+- Características de los clientes: Los clientes que abandonan el servicio suelen tener cargos mensuales más elevados y una antigüedad estimada menor.
+
+## Resultados del modelado predictivo
+
+Se evaluaron dos modelos LightGBM:
+
+| Metric | Initial Model | Adjusted Model |
+|:---|---:|---:|
+| ROC-AUC | 0.9344 | 0.8110 |
+| Recall | 0.7388 | 0.4989 |
+| Precision | 0.8712 | 0.5825 |
+| F1-score | 0.7995 | 0.5375 |
+
+El modelo ajustado excluye las variables *TotalCharges* (cargos totales) y *TenureMonths* (meses de antigüedad) para reducir la dependencia de información temporal potencialmente problemática.
+
+Se seleccionó el modelo ajustado como resultado principal para una evaluación retrospectiva más conservadora. Ninguno de los modelos ha sido validado para predecir futuras cancelaciones de clientes.
+
+## Recomendaciones empresariales
+
+1. Evaluar incentivos de retención dirigidos a clientes con contratos mensuales (sin permanencia).
+
+2. Investigar la calidad del servicio y las experiencias de soporte entre los clientes de fibra óptica.
+
+3. Revisar las experiencias de facturación asociadas a los pagos mediante cheque electrónico.
+
+4. Explorar estrategias de vinculación temprana para clientes recientes con cargos mensuales más elevados.
+
+## Limitaciones
+
+El conjunto de datos no contiene medidas directas de satisfacción del cliente, reclamaciones o calidad del servicio. Por lo tanto, las relaciones observadas no deben interpretarse como causas confirmadas de la pérdida de clientes (*churn*).
+
+La evaluación del modelo es retrospectiva y no determina su rendimiento predictivo futuro.
+
+## Conclusión
+
+Este proyecto demuestra cómo el análisis de clientes y el aprendizaje automático pueden ayudar a identificar segmentos de clientes de alto riesgo, evaluar patrones predictivos y transformar los hallazgos analíticos en recomendaciones prácticas para la retención.
