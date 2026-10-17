@@ -20,6 +20,24 @@ El conjunto de datos contiene 7.043 registros de clientes, incluyendo detalles d
 
 La tasa de abandono observada en general es del 26,54 %.
 
+## Acceso al conjunto de datos y reproducibilidad
+
+Este proyecto utiliza el conjunto de datos de clientes de la empresa de telecomunicaciones Interconnect, proporcionado como parte del programa de Ciencia de Datos de TripleTen.
+
+El conjunto de datos original no se incluye en este repositorio, ya que no se han verificado los permisos para su redistribución.
+
+El Jupyter Notebook contiene el código de análisis, los resultados de su ejecución, visualizaciones, los resultados de la evaluación del modelo y recomendaciones de negocio, lo que permite a los revisores examinar la metodología y los hallazgos sin necesidad de descargar los datos originales.
+
+Para reproducir el análisis, los usuarios autorizados deben obtener el conjunto de datos original a través de los materiales de su curso y colocar los siguientes archivos en el directorio `data/raw/`:
+
+contract.csv
+
+internet.csv
+
+personal.csv
+
+phone.csv
+
 ## Herramientas y tecnologías
 
 Python · Pandas · NumPy · Matplotlib · Seaborn · Scikit-learn · LightGBM · Jupyter Notebook
