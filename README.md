@@ -1,4 +1,4 @@
-# Análisis de la experiencia del cliente: Análisis de abandono y retención
+# Telecom Customer Churn Prediction — Machine Learning & Retention Analysis
 
 Este proyecto analiza el abandono de clientes (*churn*) en una empresa de telecomunicaciones para identificar segmentos asociados a mayores tasas de cancelación y explorar cómo el aprendizaje automático (*machine learning*) puede apoyar las estrategias de retención.
 
@@ -52,6 +52,10 @@ Python · Pandas · NumPy · Matplotlib · Seaborn · Scikit-learn · LightGBM �
 
 - Características de los clientes: Los clientes que abandonan el servicio suelen tener cargos mensuales más elevados y una antigüedad estimada menor.
 
+![Churn Rate by Contract Type](images/churn_by_contract.png)
+
+**Key Insight:** Month-to-month contracts showed a 42.7% churn rate, compared to 11.3% for one-year contracts and 2.8% for two-year contracts. Contract type is strongly associated with customer churn and may help inform retention strategies.
+
 ## Resultados del modelado predictivo
 
 Se evaluaron dos modelos LightGBM:
@@ -63,9 +67,13 @@ Se evaluaron dos modelos LightGBM:
 | Precision | 0.8712 | 0.5825 |
 | F1-score | 0.7995 | 0.5375 |
 
-El modelo ajustado excluye las variables *TotalCharges* (cargos totales) y *TenureMonths* (meses de antigüedad) para reducir la dependencia de información temporal potencialmente problemática.
+## Model Interpretation
 
-Se seleccionó el modelo ajustado como resultado principal para una evaluación retrospectiva más conservadora. Ninguno de los modelos ha sido validado para predecir futuras cancelaciones de clientes.
+The initial LightGBM model achieved a recall of 0.7388, correctly identifying approximately 74% of customers who actually churned. In contrast, the adjusted model achieved a recall of 0.4989, identifying approximately 50% of actual churn cases.
+
+The initial model also performed better in ROC-AUC, precision, and F1-score. These results suggest that the initial model is the stronger candidate for identifying customers at risk of leaving.
+
+From a business perspective, the initial model could help prioritize customer retention efforts. However, it still misses approximately 26% of customers who actually churn, so its predictions should support rather than replace business decisions.
 
 ## Recomendaciones empresariales
 
